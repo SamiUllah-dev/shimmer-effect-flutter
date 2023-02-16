@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer_effect/widgets/todo_item.dart';
+import 'package:shimmer_effect/widgets/todo_list_loading_shimmer.dart';
 
 import 'dummy_data.dart';
 import 'models/todo_model.dart';
@@ -39,7 +40,7 @@ class HomeScreen extends StatelessWidget {
         future: generateDummyTodoList(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
+            return const TodoListLoadingShimmer();
           }
           if (snapshot.hasError) {
             return const Center(
